@@ -1,0 +1,9 @@
+node_modules/
+coverage/
+documentation/
+docs/
+raml/
+
+.idea/
+.DS_Store
+npm-debug.loga

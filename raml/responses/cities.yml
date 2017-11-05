@@ -1,0 +1,16 @@
+200:
+  description: Get all cities
+  body:
+    application/json:
+      example: |
+        {
+            "result": {
+                "code": "BSSN2000",
+                "message": "Get all cities successfully!"
+            },
+            "data": [
+                "Madrid",
+                "Barcelona",
+                "Paris"
+            ]
+        }

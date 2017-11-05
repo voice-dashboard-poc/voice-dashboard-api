@@ -1,0 +1,44 @@
+#%RAML 1.0
+---
+title: "Voice Dashboard API (PoC)"
+version: v1
+baseUri: http://localhost:9000/voice-api
+mediaType: application/json
+
+schemas:
+  - business_updated: !include schemas/business_update.json
+
+## Resource for Cities
+/cities:
+  description: All about cities
+  get:
+    description: Get all cities available
+    responses: !include responses/cities.yml
+
+
+  ## Resource for Businesses
+  /{city}/businesses:
+    description: All about businesses
+    get:
+      description: Get all business from city
+      responses: !include responses/get_businesses.yml
+
+    ## Resource for Business
+    /{businessId}:
+      description: All about a business
+      patch:
+        description: Partial update of a business
+        headers:
+          Content-Type:
+            description: json
+            example: application/json
+            default: application/json
+            required: true
+        body:
+          schema: business_update
+          example: !include schemas/examples/update_partial_business_example.json
+        responses: !include responses/business_update.yml
+
+      delete:
+        description: Remove a business
+        responses: !include responses/delete_businesses.yml

@@ -1,0 +1,40 @@
+{
+  "name": "voice-dashboard-ai",
+  "version": "0.0.1",
+  "description": "HapiJS based API with websocket capability",
+  "main": "server/app.js",
+  "author": "Williams Aguilera",
+  "license": "Copyright",
+  "dependencies": {
+    "awilix": "2.6.0",
+    "hapi": "16.5.0",
+    "socket.io": "^2.0.3",
+    "ws": "^3.1.0"
+  },
+  "devDependencies": {
+    "nsp": "2.7.0",
+    "cross-env": "^4.0.0",
+    "eslint": "^4.2.0",
+    "jest": "^20.0.0",
+    "jsdoc": "^3.4.3",
+    "nodemon": "^1.11.0",
+    "raml2html": "^6.3.0",
+    "rimraf": "^2.6.1"
+  },
+  "engines": {
+    "node": ">=0.12.0"
+  },
+  "scripts": {
+    "start": "node server",
+    "dev": "cross-env NODE_ENV=local cross-env NODE_ENV=development nodemon --inspect -q -w ./server server",
+    "test:clean": "rimraf ./coverage",
+    "pretest:unit": "npm run test:clean",
+    "test:unit": "cross-env NODE_ENV=test cross-env NODE_ENV=test jest -c ./tests/unit.config.json --coverage",
+    "test": "npm run test:unit",
+    "test:unit:watch": "cross-env NODE_ENV=test cross-env NODE_ENV=test jest -c ./tests/unit.config.json --watchAll",
+    "build:apiDocs:clean": "rimraf ./documentation && mkdir ./documentation",
+    "build:apiDocs": "npm run build:apiDocs:clean && raml2html raml/api.raml > ./documentation/index.html",
+    "nsp": "nsp check"
+  },
+  "private": true
+}

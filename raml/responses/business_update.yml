@@ -1,0 +1,23 @@
+200:
+  description: Update city business partially
+  body:
+    application/json:
+      example: |
+        {
+            "result": {
+                "code": "BSSN2003",
+                "message": "Business address updated successfully"
+            }
+        }
+
+400:
+  description: Bad request
+  body:
+    application/json:
+      example: |
+        {
+            "result": {
+                "code": "BSSN4002",
+                "message": "address is required. It must be a string, min 3 max 100 characters"
+            }
+        }
