@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function(server, container) {
+module.exports = (server, container) => {
   server.route({
     method: 'GET',
     path: '/query/{daoMethod}',

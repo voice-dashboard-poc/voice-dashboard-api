@@ -34,8 +34,6 @@ $ npm run test
 ```
 
 
-
-
 License
 ----
 
