@@ -6,8 +6,8 @@ exports.createGeneralError = (err) => {
     statusCode: err.statusCode || 500,
     body: {
       result: {
-        code      : err.code || '50000',
-        message   : err.message
+        code: err.code || '50000',
+        message: err.message
       }
     }
   };

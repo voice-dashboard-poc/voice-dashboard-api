@@ -10,7 +10,9 @@ const all = {
 
   routes: {
     prefix: '/voice-api'
-  }
+  },
+
+  modules: ['logs', 'customers', 'budget']
 
 };
 
@@ -18,4 +20,4 @@ const all = {
 // ==============================================
 module.exports = Object.assign(
   all,
-  require('./' + process.env.DSHB_NODE_ENV ) || {});
+  require('./' + process.env.NODE_ENV ) || {});

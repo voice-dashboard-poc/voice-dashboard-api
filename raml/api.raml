@@ -5,40 +5,84 @@ version: v1
 baseUri: http://localhost:9000/voice-api
 mediaType: application/json
 
-schemas:
-  - business_updated: !include schemas/business_update.json
-
-## Resource for Cities
-/cities:
-  description: All about cities
-  get:
-    description: Get all cities available
-    responses: !include responses/cities.yml
-
-
-  ## Resource for Businesses
-  /{city}/businesses:
-    description: All about businesses
-    get:
-      description: Get all business from city
-      responses: !include responses/get_businesses.yml
-
-    ## Resource for Business
-    /{businessId}:
-      description: All about a business
-      patch:
-        description: Partial update of a business
-        headers:
-          Content-Type:
-            description: json
-            example: application/json
-            default: application/json
-            required: true
+## Resource for users
+/user:
+  description: User authorization
+  /{userLogin}:
+    /login:
+      put:
+        description: Logs the user into the system
         body:
-          schema: business_update
-          example: !include schemas/examples/update_partial_business_example.json
-        responses: !include responses/business_update.yml
+          example: {}
+    /logout:
+      put:
+        description: Logs the user out of the system
+        body:
+          example: {}
 
-      delete:
-        description: Remove a business
-        responses: !include responses/delete_businesses.yml
+## Resource for modules
+/module:
+  description: Handle the available modules in the system
+  /{moduleId}:
+    description: Interacts with an specific module
+    /open:
+      post:
+        description: Opens the desired module
+        body:
+          example: {}
+    /close:
+      post:
+        description: Closes the desired module
+        body:
+          example: {}
+
+  /logs:
+    description: Interacts with the logs module
+    /filter:
+      get:
+        description: Filters the logs by the desired level
+        queryParameters:
+          level:
+            displayName: Log level
+            type: string
+            example: error
+            default: all
+            required: false
+
+  /customers:
+    description: Interacts with the customers module
+    /filter:
+      get:
+        description: Filters the customers by country
+        queryParameters:
+          country:
+            type: string
+            example: spain
+            default: all
+            required: false
+    /show/{userId}:
+      get:
+        description: Shows an specific customer
+
+  /budget:
+    description: Interacts with the budget module
+    /filter:
+      get:
+        description: Filters the money related information
+        queryParameters:
+          year:
+            type: number
+            example: 2016
+            default: 2017
+            required: false
+          month:
+            type: number
+            example: 10
+            default: 11
+            required: false
+          type:
+            type: string
+            example: budget
+            required: true
+
+

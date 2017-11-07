@@ -8,6 +8,7 @@
   "dependencies": {
     "awilix": "2.6.0",
     "hapi": "16.5.0",
+    "joi": "^13.0.1",
     "socket.io": "^2.0.3",
     "ws": "^3.1.0"
   },
@@ -26,7 +27,7 @@
   },
   "scripts": {
     "start": "node server",
-    "dev": "cross-env NODE_ENV=local cross-env NODE_ENV=development nodemon --inspect -q -w ./server server",
+    "dev": "cross-env NODE_ENV=local cross-env NODE_ENV=local nodemon --inspect -q -w ./server server",
     "test:clean": "rimraf ./coverage",
     "pretest:unit": "npm run test:clean",
     "test:unit": "cross-env NODE_ENV=test cross-env NODE_ENV=test jest -c ./tests/unit.config.json --coverage",

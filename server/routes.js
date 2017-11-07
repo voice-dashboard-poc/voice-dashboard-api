@@ -7,7 +7,7 @@
 const container = require('./api/boot');
 
 exports.register = function(server, options, next) {
-  require('./api/queries')(server, container);
+  require('./api/user')(server, container);
   next();
 };
 
