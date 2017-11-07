@@ -6,7 +6,7 @@ function makeModuleService(deps) {
     GlobalService
   } = deps;
   return {
-    login({module}) {
+    open({module}) {
       socketService.broadcastMessage('module', {
         action: 'open',
         data: {
@@ -16,7 +16,7 @@ function makeModuleService(deps) {
       GlobalService.setConfigValue('activeModule', module);
     },
 
-    logout() {
+    close() {
       socketService.broadcastMessage('module', {
         action: 'close'
       });
