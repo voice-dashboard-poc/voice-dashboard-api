@@ -1,8 +1,8 @@
 {
-  "name": "voice-dashboard-ai",
+  "name": "voice-dashboard-api",
   "version": "0.0.1",
   "description": "HapiJS based API with websocket capability",
-  "main": "server/app.js",
+  "main": "server/index.js",
   "author": "Williams Aguilera",
   "license": "Copyright",
   "dependencies": {
